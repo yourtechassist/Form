@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form</title>
+    <style>
+        body {
+            margin: 0;
+            overflow: hidden;
+            background: gainsboro;
+            padding: 0;
+            font-family: Arial, sans-serif;
+        }
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .contactform {
+            background: linear-gradient(to right, rgb(137, 104, 255), rgb(175, 152, 255));
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 400px;
+        }
+       
+        input[type="text"],
+        textarea {
+            width: 100%;
+            padding: 10px;
+            border: none;
+            border-radius: 4px;
+            box-sizing: border-box;
+            margin-bottom: 10px;
+        }
+        textarea {
+            height: 100px;
+        }
+        .btn {
+            width: fit-content;
+            padding: 10px;
+            background-color: #17a2b8;
+            border: none;
+            border-radius: 4px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        #messageDisplay {
+            margin-top: 15px;
+            text-align: center;
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="contactform">
+            <h1>Contact Form</h1>
+            <form id="contactform">
+                <div class="form-group">
+                    <label for="name">Name</label>
+                    <input type="text" name="name" id="name" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="text" name="email" id="email"  class="form-control">
+                </div>
+                <div class="form-group">
+                    <label for="message">Message</label>
+                    <textarea name="message" id="message"  class="form-control"></textarea>
+                </div>
+                <div class="form-group">
+                    <button type="submit" class="btn btn-info">Submit</button>
+                </div>
+            </form>
+            <div id="messageDisplay"></div>
+        </div>
+    </div>
+
+    <script>
+    document.getElementById('contactform').addEventListener('submit', function(event) {
+        event.preventDefault();
+        const name = document.getElementById('name').value,
+              email = document.getElementById('email').value,
+              message = document.getElementById('message').value,
+              display = document.getElementById('messageDisplay');
+        
+        display.textContent = (name && email && message) ? 'Thank you for your message!' : 'Please fill out all fields!';
+        display.style.color = (name && email && message) ? 'green' : 'red';
+    });
+    </script>
+</body>
+</html>
